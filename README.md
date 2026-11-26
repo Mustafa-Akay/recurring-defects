@@ -1,5 +1,7 @@
 # recurring-defects
 
+[![CI](https://github.com/Mustafa-Akay/recurring-defects/actions/workflows/ci.yml/badge.svg)](https://github.com/Mustafa-Akay/recurring-defects/actions/workflows/ci.yml)
+
 Detecting recurring aircraft defects from free-text maintenance reports, using public FAA Service Difficulty Reports (SDR).
 
 > Status: Phase 1 (data foundation) in progress. Design: [docs/superpowers/specs/2026-11-26-tekrarlayan-ariza-design.md](docs/superpowers/specs/2026-11-26-tekrarlayan-ariza-design.md)

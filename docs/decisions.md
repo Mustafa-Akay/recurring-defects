@@ -19,4 +19,7 @@ Her satır: tarih · karar · neden.
 - 2026-11-26 · Testler ayrı `reliability_test` veritabanında, migration dosyasından kurulur · Testler tabloyu boşaltır; gerçek içe alınmış veriyi silmesinler. Şema migration'dan geldiği için test ile gerçek arasında fark olmaz.
 - 2026-11-26 · 2025 SDR içe alma ölçümü: 67.654 kayıt 5,2 sn; aynı dosya ikinci kez: 0 eklenen, 3,6 sn · Idempotent davranış gerçek veride doğrulandı.
 - 2026-11-26 · 2020-2025 SDR (6 dosya, 191 MB) içe alındı: 376.325 kayıt, 15.858 uçak, 1.055 model, tablo 236 MB; dosya başına 4-6 sn · Önce kontrol edildi: OperatorControlNumber altı yılın tamamında benzersiz (çakışma 0), bozuk tarih/sayı 0, 0'la başlayan JASC 0. Yani tekillik anahtarı veri kaybettirmiyor.
+- 2026-11-26 · CI (GitHub Actions) planda Görev 7'deydi, Görev 3'ten sonra öne alındı · .NET testleri hazır; bundan sonraki her commit otomatik test edilsin. Python testleri (pytest) Görev 5'te aynı workflow'a eklenecek.
+- 2026-11-26 · CI'da PostgreSQL servis olarak, yereldekiyle aynı imaj (`pgvector/pgvector:pg17`) · Testler gerçek veritabanına karşı çalışıyor; sahte (mock) veritabanı `on conflict` ve üretilmiş sütun gibi davranışları test edemez.
+- 2026-11-26 · `permissions: contents: read` · Workflow depoya yazamasın; ele geçirilen bir adım zarar veremesin (AeroBag bulgusu #7).
 - 2026-11-26 · `.gitattributes` ile test CSV'si `-text` · Git'in satır sonu dönüşümü alan içindeki CRLF'yi değiştirip testi anlamsızlaştırmasın.

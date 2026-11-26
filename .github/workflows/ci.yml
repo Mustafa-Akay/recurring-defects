@@ -1,0 +1,61 @@
+# Her push ve pull request'te testleri GitHub'ın sunucusunda, temiz bir makinede çalıştırır.
+# "Benim bilgisayarımda çalışıyor" yerine "her yerde çalışıyor" kanıtı.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Workflow yalnızca kodu okuyabilir; depoya yazamaz, sürüm yayınlayamaz (AeroBag bulgusu #7).
+permissions:
+  contents: read
+
+# Aynı dala art arda push edilirse eski çalışma iptal edilir, sırada beklenmez.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dotnet:
+    name: .NET testleri
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    # Testler gerçek PostgreSQL'e karşı çalışıyor; yerelde Docker Compose'un yaptığını burada servis yapıyor.
+    # Aynı imaj (pgvector/pgvector:pg17), aynı kullanıcı; şifre yalnızca bu geçici makine için.
+    services:
+      db:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_DB: reliability
+          POSTGRES_USER: reliability
+          POSTGRES_PASSWORD: reliability_dev
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U reliability -d reliability"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+
+    env:
+      # TestDatabase.cs bu değişkeni okur; yoksa yerel 5434 portuna bağlanırdı.
+      RELIABILITY_TEST_ADMIN: Host=localhost;Port=5432;Database=reliability;Username=reliability;Password=reliability_dev
+      DOTNET_NOLOGO: true
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore -c Release
+
+      - name: Test
+        run: dotnet test --no-build -c Release --logger "console;verbosity=normal"

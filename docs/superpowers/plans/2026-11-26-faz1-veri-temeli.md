@@ -231,6 +231,6 @@ def test_draws_from_top_five_models(df):
 **Files:**
 - Create: `.github/workflows/ci.yml`
 
-- [ ] **Adım 1 [CLAUDE]:** CI: PostgreSQL servisiyle `dotnet test` ve `pytest`. `permissions: contents: read` (AeroBag bulgusu #7).
+- [x] **Adım 1 [CLAUDE]:** CI: PostgreSQL servisiyle `dotnet test` ve `pytest`. `permissions: contents: read` (AeroBag bulgusu #7). *(26.11: .NET kısmı Görev 3'ten sonra öne alındı; `pytest` işi Görev 5'te eklenecek.)*
 - [ ] **Adım 2:** Push, CI'ın yeşil olduğunu gör.
 - [ ] **Adım 3 [KULLANICI]:** "Kendi cümlelerinle anlat" oturumu: Neden olay tablosu? Neden içe alma tekrar çalıştırılabilir? Neden referans kalıplarını siliyoruz? Neden aynı JASC içinde çift seçiyoruz? Veri raporunda ne çıktı? Claude eksikleri tamamlar, cevaplar `docs/notes/anlatim-faz1.md`'ye girer.
