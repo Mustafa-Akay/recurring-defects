@@ -1,0 +1,23 @@
+# Yerel geliştirme veritabanı: PostgreSQL 17 + pgvector.
+# Şifre yalnızca geliştirme içindir; port sadece bu bilgisayara (127.0.0.1) açılır.
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    container_name: reliability-db
+    environment:
+      POSTGRES_DB: reliability
+      POSTGRES_USER: reliability
+      POSTGRES_PASSWORD: reliability_dev
+    ports:
+      - "127.0.0.1:5434:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/migrations:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U reliability -d reliability"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:

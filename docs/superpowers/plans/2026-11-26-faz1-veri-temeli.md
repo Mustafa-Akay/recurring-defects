@@ -15,7 +15,7 @@
 ## Global Constraints
 
 - Öğrenme biçimi C: **[KULLANICI]** etiketli görevleri kullanıcı yazar, Claude yol gösterir ve inceler. **[CLAUDE]** etiketli görevleri Claude yazar ve önemli yerleri anlatır. Her görevin başında "ne, neden" açıklaması yapılır.
-- Kod klasörü: `C:\Users\Hp\Documents\Havayolu Poroje fikri\recurring-defects\` (çalışma adı, benim kararım), kendi Git deposu.
+- Kod klasörü: `C:\Users\Hp\Documents\havayolu-projeleri\recurring-defects\`, kendi Git deposu (GitHub: Mustafa-Akay/recurring-defects).
 - Ham veri Git'e girmez: `data/raw/` `.gitignore`'da.
 - PostgreSQL yalnızca `127.0.0.1` üzerinde yayımlanır (AeroBag güvenlik bulgusu #2).
 - Kişisel veri yok. SDR herkese açık. Tescil numarası uçağı tanımlar, kişiyi tanımlamaz.
