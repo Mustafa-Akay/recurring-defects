@@ -1,0 +1,3 @@
+# Test verisi FAA dosyasıyla birebir aynı kalmalı: alan içindeki CRLF satır kırılımları
+# Git tarafından LF/CRLF dönüşümüne uğramasın.
+tests/**/Fixtures/*.csv -text
