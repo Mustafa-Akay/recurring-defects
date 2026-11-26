@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="34.1.0" />
+    <PackageReference Include="Npgsql" Version="11.0.0" />
   </ItemGroup>
 
 </Project>
